@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using FleetProvider.Domain.AggregatesModel.FleetProviderAggregate.RoleValidations;
 using FleetProvider.Domain.AggregatesModel.FleetProviderAggregate.Rules.FleetProviders;
+using FleetProvider.Domain.Exceptions;
 using FleetProvider.Domain.SeedWork;
 using Microsoft.EntityFrameworkCore;
 
@@ -36,6 +37,12 @@ public class FleetProvider : Entity, IAggregateRoot
 
     private FleetProvider(int shiftId, int capacity, DateTime date)
     {
+        if (capacity < 1)
+            throw new DomainException("invalid capacity value");
+
+        if (Date.Date == DateTime.Today.AddDays(-1))
+            throw new DomainException("you can not create a shift with this date.");
+
         ShiftId = shiftId;
         Capacity = capacity;
         Date = date.Date;
@@ -43,16 +50,15 @@ public class FleetProvider : Entity, IAggregateRoot
     }
 
 
-    public static async Task<FleetProvider> Create(int shiftId, int capacity, DateTime date,  IShiftDayUniquenessChecker checker)
+    public static async Task<FleetProvider> Create(int shiftId, int capacity, DateTime date, IShiftDayUniquenessChecker checker)
     {
         await CheckRule(new ShiftFleetBeUniqueRule(checker, shiftId, date));
 
-        return new FleetProvider(shiftId,capacity, date);
+        return new FleetProvider(shiftId, capacity, date);
     }
 
-    public async Task AddFleet(int fleetId, IFleetProviderValidationChecker checker)
+    public async Task AddFleet(int fleetId, IFleetShouldBeFreeChecker checker)
     {
-        await CheckRule(new FleetProviderIsValidWithOldDataBeUniqueRule(checker, ShiftId, Date, fleetId));
-
+        await CheckRule(new CheckFleetShouldBeFreeRule(checker, ShiftId, Date, fleetId));
     }
 }
