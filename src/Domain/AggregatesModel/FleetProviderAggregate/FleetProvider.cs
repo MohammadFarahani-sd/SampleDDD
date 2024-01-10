@@ -16,7 +16,7 @@ public class FleetProvider : Entity, IAggregateRoot
     [ForeignKey(nameof(ShiftId))]
     public virtual Shift Shift { get; set; }
 
-    public int Capacity { get; private set; }
+    public byte Capacity { get; private set; }
 
     /// <summary>
     /// this is a date only property , may be it is hard to create a migration for this 
@@ -35,7 +35,7 @@ public class FleetProvider : Entity, IAggregateRoot
         _fleetShifts = new List<FleetShift>();
     }
 
-    private FleetProvider(int shiftId, int capacity, DateTime date)
+    private FleetProvider(int shiftId, byte capacity, DateTime date)
     {
         if (capacity < 1)
             throw new DomainException("invalid capacity value");
@@ -50,7 +50,7 @@ public class FleetProvider : Entity, IAggregateRoot
     }
 
 
-    public static async Task<FleetProvider> Create(int shiftId, int capacity, DateTime date, IShiftDayUniquenessChecker checker)
+    public static async Task<FleetProvider> Create(int shiftId, byte capacity, DateTime date, IShiftDayUniquenessChecker checker)
     {
         await CheckRule(new ShiftFleetBeUniqueRule(checker, shiftId, date));
 
