@@ -7,7 +7,7 @@
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 		<UserSecretsId>43ed867a-32a1-41b3-80af-86a48de2abf6</UserSecretsId>
 		<RootNamespace>FleetProvider.Domain</RootNamespace>
-		<LangVersion>10.0</LangVersion>
+		<LangVersion>12.0</LangVersion>
 	</PropertyGroup>
 
 	<ItemGroup>

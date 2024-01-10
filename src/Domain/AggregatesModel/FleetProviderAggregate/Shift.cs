@@ -3,6 +3,7 @@ using FleetProvider.Domain.AggregatesModel.FleetProviderAggregate.RoleValidation
 using FleetProvider.Domain.AggregatesModel.FleetProviderAggregate.Rules.Shifts;
 using FleetProvider.Domain.Exceptions;
 using FleetProvider.Domain.SeedWork;
+using Itenso.TimePeriod;
 
 namespace FleetProvider.Domain.AggregatesModel.FleetProviderAggregate;
 
@@ -10,7 +11,10 @@ namespace FleetProvider.Domain.AggregatesModel.FleetProviderAggregate;
 public class Shift : Entity
 {
     public int TimeSlotId { get; private set; }
-
+    
+    [ForeignKey(nameof(TimeSlotId))]
+    public virtual TimeSlot TimeSlot { get; set; }
+    
     public int Polygon { get; private set; }
 
     public bool Active { get; private set; }

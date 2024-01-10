@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using FleetProvider.Domain.AggregatesModel.FleetProviderAggregate.RoleValidations;
 using FleetProvider.Domain.AggregatesModel.FleetProviderAggregate.Rules.FleetProviders;
-using FleetProvider.Domain.Exceptions;
 using FleetProvider.Domain.SeedWork;
 using Microsoft.EntityFrameworkCore;
 
@@ -55,8 +54,6 @@ public class FleetProvider : Entity, IAggregateRoot
     public async Task AddFleet(int fleetId, IFleetProviderValidationChecker checker)
     {
         await CheckRule(new FleetProviderIsValidWithOldDataBeUniqueRule(checker, ShiftId, Date, fleetId));
-
-
 
     }
 }

@@ -7,8 +7,10 @@ namespace FleetProvider.Domain.AggregatesModel.FleetProviderAggregate;
 [Table("TimeSlot", Schema = "FP")]
 public class TimeSlot : Entity
 {
+    [Column("From", TypeName = "time")]
     public TimeOnly From { get; private set; }
 
+    [Column("To", TypeName = "time")] 
     public TimeOnly To { get; private set; }
 
     public TimeSlot()
