@@ -25,6 +25,4 @@ public class Fleet : Entity
         }
         this.Name = name;
     }
-    public string GetName() => this.Name;
-
 }

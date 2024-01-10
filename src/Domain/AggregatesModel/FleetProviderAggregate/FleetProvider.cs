@@ -45,7 +45,6 @@ public class FleetProvider : Entity, IAggregateRoot
 
     public static async Task<FleetProvider> Create(int shiftId, int capacity, DateTime date,  IShiftDayUniquenessChecker checker)
     {
-        
         await CheckRule(new ShiftFleetBeUniqueRule(checker, shiftId, date));
 
         return new FleetProvider(shiftId,capacity, date);
