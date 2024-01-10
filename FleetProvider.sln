@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32407.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8F4397B4-6C4A-491B-9573-4DE2EF522F2F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solutionItem", "solutionItem", "{8B94E495-56BE-426B-A285-DB2232D54786}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.targets = Directory.Build.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{99E577BC-A6DE-4BB7-B4BF-FE6F2FD79993}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FleetProvider.Domain", "src\Domain\FleetProvider.Domain.csproj", "{F6E30A08-CFAC-461B-9FEC-B725CD49B2A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F6E30A08-CFAC-461B-9FEC-B725CD49B2A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6E30A08-CFAC-461B-9FEC-B725CD49B2A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6E30A08-CFAC-461B-9FEC-B725CD49B2A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6E30A08-CFAC-461B-9FEC-B725CD49B2A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{99E577BC-A6DE-4BB7-B4BF-FE6F2FD79993} = {8F4397B4-6C4A-491B-9573-4DE2EF522F2F}
+		{F6E30A08-CFAC-461B-9FEC-B725CD49B2A1} = {99E577BC-A6DE-4BB7-B4BF-FE6F2FD79993}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {239EFCEC-1809-4190-B428-490F43EC18E1}
+	EndGlobalSection
+EndGlobal
