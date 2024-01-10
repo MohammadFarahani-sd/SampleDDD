@@ -1,17 +1,21 @@
-﻿using FleetProvider.Domain.AggregatesModel.FleetProviderAggregate;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace FleetProvider.Infrastructure.EntityConfigurations.Customers;
 
-public class FleetShiftEntityTypeConfiguration : EntityTypeConfiguration<FleetShift>
+public class FleetProviderEntityTypeConfiguration : EntityTypeConfiguration<Domain.AggregatesModel.FleetProviderAggregate.FleetProvider>
 {
-    public override void ConfigureDerived(EntityTypeBuilder<FleetShift> configuration)
+    public override void ConfigureDerived(EntityTypeBuilder<Domain.AggregatesModel.FleetProviderAggregate.FleetProvider> configuration)
     {
-        configuration.ToTable("FleetShift", "FP");
+        configuration.ToTable("FleetProvider", "FP");
 
         configuration.Property(o => o.Id);
 
         configuration.HasKey(o => o.Id);
+
+        var fleetShiftNavigation =
+            configuration.Metadata.FindNavigation(nameof(Domain.AggregatesModel.FleetProviderAggregate.FleetProvider.FleetShifts));
+
+        fleetShiftNavigation!.SetPropertyAccessMode(PropertyAccessMode.Field);
     }
 }

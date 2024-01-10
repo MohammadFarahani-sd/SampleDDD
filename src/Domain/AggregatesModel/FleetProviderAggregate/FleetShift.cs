@@ -11,17 +11,17 @@ public class FleetShift : Entity
     public virtual Fleet Fleet { get; set; }
 
     public int FleetProviderId { get; private set; }
-    
+
     [ForeignKey(nameof(FleetProviderId))]
     public virtual FleetProvider FleetProvider { get; set; }
 
-    public bool Active { get;private set; }
-    
+    public bool Active { get; private set; }
+
     protected FleetShift()
     {
     }
 
-    public FleetShift(int fleetId, int fleetProviderId)
+    public FleetShift(int fleetProviderId, int fleetId)
     {
         FleetId = fleetId;
         FleetProviderId = fleetProviderId;
@@ -38,5 +38,5 @@ public class FleetShift : Entity
     public void ActiveFleet()
     {
 
-    } 
+    }
 }

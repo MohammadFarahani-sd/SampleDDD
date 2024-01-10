@@ -60,5 +60,7 @@ public class FleetProvider : Entity, IAggregateRoot
     public async Task AddFleet(int fleetId, IFleetShouldBeFreeChecker checker)
     {
         await CheckRule(new CheckFleetShouldBeFreeRule(checker, ShiftId, Date, fleetId));
+
+        _fleetShifts.Add(new FleetShift(Id, fleetId));
     }
 }
